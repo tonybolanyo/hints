@@ -22,7 +22,11 @@ export default class HintsManager {
 
         console.log('importado?', suggestBox);
         this.suggestor(this.element, {
-            '@': suggestions
+            '@': this.suggestUser
         })
+    }
+
+    suggestUser(user, cb) {
+        setTimeout(() => cb(null, suggestions), 800);
     }
 }
