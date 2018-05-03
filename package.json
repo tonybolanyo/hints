@@ -27,6 +27,7 @@
     "webpack-cli": "^2.1.2"
   },
   "dependencies": {
-    "rxjs": "^5.5.10"
+    "rxjs": "^5.5.10",
+    "suggest-box": "^2.2.3"
   }
 }

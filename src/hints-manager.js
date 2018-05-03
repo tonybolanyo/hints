@@ -1,9 +1,18 @@
 import Rx from 'rxjs/Rx';
+import * as suggestBox from 'suggest-box';
 
+const suggestions = [
+    { title: 'tony', subtitle: 'Tony G. Bolaño', value: '@tony' },
+    { title: 'luis', subtitle: 'Luis R.', value: '@luislard' },
+    { title: 'david', subtitle: 'David', value: '@david'},
+    { title: 'josecarlos', subtitle: 'José Carlos', value: '@josecarlos'},
+    { title: 'santi', subtitle: 'Santiago A.', value: '@santi'}
+]
 
 export default class HintsManager {
     constructor(selector) {
         this.element = document.querySelector(selector);
+        this.suggestor = suggestBox.default;
     }
 
     init() {
@@ -11,13 +20,9 @@ export default class HintsManager {
             return;
         }
 
-        this.keylogger$ = Rx.Observable.fromEvent(this.element, 'input');
-        this.keylogger$                     // every key press on textarea
-            .map(e => {
-                return e.target.value.match(/:(\w+):/gu)
-            })
-            .subscribe(e => {
-                console.log(e);
-            });
+        console.log('importado?', suggestBox);
+        this.suggestor(this.element, {
+            '@': suggestions
+        })
     }
 }
